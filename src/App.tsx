@@ -4,7 +4,7 @@ import SelectForm from "./SelectForm/SelectFrom";
 function App() {
   return (
     <>
-      <div>Music Tabulators app</div>
+      <h1>Music Tabulators app</h1>
       <SelectForm />
     </>
   );

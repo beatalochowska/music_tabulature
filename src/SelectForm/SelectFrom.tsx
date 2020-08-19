@@ -24,7 +24,7 @@ const tabulatorTypes: { value: string; name: string }[] = [
 ];
 
 const handleSubmit = (input: string, event: FormEvent) => {
-  fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${input}`)
+  fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${input}&`)
     .then((response) => response.json())
     .then((data) => console.log(data));
   event.preventDefault();
