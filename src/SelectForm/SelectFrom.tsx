@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FormEvent } from "react";
 
 const tabulatorTypes: { value: string; name: string }[] = [
   {
@@ -23,13 +23,28 @@ const tabulatorTypes: { value: string; name: string }[] = [
   },
 ];
 
+const handleSubmit = (input: string, event: FormEvent) => {
+  fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${input}`)
+    .then((response) => response.json())
+    .then((data) => console.log(data));
+  event.preventDefault();
+};
+
 function SelectForm() {
   const [selectedValue, setSelectedValue] = React.useState("0");
+  const [searchedValue, setSearchedValue] = React.useState("");
   return (
-    <form>
+    <form onSubmit={(event) => handleSubmit(searchedValue, event)}>
       <label>
         Search for artist or music piece:
-        <input type="text" name="name" />
+        <input
+          type="text"
+          name="name"
+          value={searchedValue}
+          onChange={(event) => {
+            setSearchedValue(event.target.value);
+          }}
+        />
       </label>
       <select
         value={selectedValue}
