@@ -2,6 +2,10 @@ import React from "react";
 
 const tabulatorTypes: { value: string; name: string }[] = [
   {
+    value: "0",
+    name: "Any",
+  },
+  {
     value: "1",
     name: "Chords",
   },
@@ -20,7 +24,7 @@ const tabulatorTypes: { value: string; name: string }[] = [
 ];
 
 function SelectForm() {
-  const [selectedValue, setSelectedValue] = React.useState("1");
+  const [selectedValue, setSelectedValue] = React.useState("0");
   return (
     <form>
       <label>
@@ -32,7 +36,9 @@ function SelectForm() {
         onChange={(event) => setSelectedValue(event.target.value)}
       >
         {tabulatorTypes.map((el) => (
-          <option value={el.value}>{el.name}</option>
+          <option value={el.value} key={el.value}>
+            {el.name}
+          </option>
         ))}
       </select>
       <input type="submit" value="Search" />
