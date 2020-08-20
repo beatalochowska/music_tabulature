@@ -1,4 +1,4 @@
-import React, { FormEvent } from "react";
+import React, { useState, FormEvent } from "react";
 
 const tabulatorTypes: { value: string; name: string }[] = [
   {
@@ -30,9 +30,9 @@ const handleSubmit = (input: string, event: FormEvent) => {
   event.preventDefault();
 };
 
-function SelectForm() {
-  const [selectedValue, setSelectedValue] = React.useState("0");
-  const [searchedValue, setSearchedValue] = React.useState("");
+function SearchForm() {
+  const [selectedValue, setSelectedValue] = useState("0");
+  const [searchedValue, setSearchedValue] = useState("");
   return (
     <form onSubmit={(event) => handleSubmit(searchedValue, event)}>
       <label>
@@ -61,4 +61,4 @@ function SelectForm() {
   );
 }
 
-export default SelectForm;
+export default SearchForm;
