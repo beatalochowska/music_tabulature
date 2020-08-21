@@ -1,13 +1,8 @@
 import React from "react";
-import { SearchForm } from "components";
+import MainPage from "pages/MainPage";
 
 function App() {
-  return (
-    <>
-      <h1>Music Tabulators app</h1>
-      <SearchForm />
-    </>
-  );
+  return <MainPage />;
 }
 
 export default App;
