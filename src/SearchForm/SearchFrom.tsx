@@ -56,7 +56,9 @@ function SearchForm() {
           </option>
         ))}
       </select>
-      <input type="submit" value="Search" />
+      <button type="submit" value="Search">
+        Search
+      </button>
     </form>
   );
 }
