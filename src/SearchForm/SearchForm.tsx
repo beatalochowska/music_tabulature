@@ -1,32 +1,11 @@
 import React, { useState, FormEvent } from "react";
-
-const tabulatorTypes: { value: string; name: string }[] = [
-  {
-    value: "0",
-    name: "Any",
-  },
-  {
-    value: "1",
-    name: "Chords",
-  },
-  {
-    value: "2",
-    name: "Bass",
-  },
-  {
-    value: "3",
-    name: "Guitar",
-  },
-  {
-    value: "4",
-    name: "Player",
-  },
-];
+import { getTabs, recordToView } from "api/musicTab";
+import { Tabulator, RecordResponse, tabulatorTypes } from "models/tabulator";
 
 const handleSubmit = (input: string, event: FormEvent) => {
-  fetch(`http://www.songsterr.com/a/ra/songs.json?pattern=${input}&`)
-    .then((response) => response.json())
-    .then((data) => console.log(data));
+  const results: Promise<RecordResponse[]> = getTabs(input, Tabulator.ANY);
+
+  results.then((res) => console.log(res.map(recordToView)));
   event.preventDefault();
 };
 
@@ -50,9 +29,9 @@ function SearchForm() {
         value={selectedValue}
         onChange={(event) => setSelectedValue(event.target.value)}
       >
-        {tabulatorTypes.map((el) => (
-          <option value={el.value} key={el.value}>
-            {el.name}
+        {tabulatorTypes.map(({ value, label }) => (
+          <option value={value} key={value}>
+            {label}
           </option>
         ))}
       </select>

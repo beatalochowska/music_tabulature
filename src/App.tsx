@@ -1,5 +1,5 @@
 import React from "react";
-import SearchForm from "./SearchForm/SearchFrom";
+import SearchForm from "./SearchForm/SearchForm";
 import ResultList from "./ResultList/ResultList";
 
 function App() {
