@@ -22,3 +22,47 @@
     transform: rotate(360deg);
   }
 }
+
+.searchTitle {
+  color: #777777;
+}
+
+.searchResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.results {
+  border-collapse: col;
+  margin: 1rem;
+  padding: 1rem;
+  width: 70vw;
+
+  td {
+    border-bottom: 1px solid #bbb;
+  }
+}
+
+.artist {
+  font-weight: 700;
+  width: 15vw;
+}
+
+.songTitle {
+  font-size: 2rem;
+  width: 25vw;
+}
+
+.tabulator {
+  padding: 0.5rem;
+  color: white;
+  border: 2px solid #ddb500;
+  border-radius: 5%;
+  background-color: #ddb500;
+  margin: 0.8rem;
+}
+
+.tabulators {
+  text-align: right;
+}
