@@ -1,6 +1,6 @@
 import React from "react";
 import { RecordView } from "models/tabulator";
-import "./styles.scss";
+import styles from "./ResultsList.module.scss";
 
 interface ResultsListProps {
   list: RecordView[];
@@ -20,7 +20,8 @@ function ResultsList({ list, searchStatus }: ResultsListProps) {
   }
   return (
     <>
-      {searchStatus === "LOADING" && <div className="lds-dual-ring"></div>}
+      <div className={styles.spinner}></div>
+      {searchStatus === "LOADING" && <div className={styles.spinner}></div>}
       {searchStatus === "INIT" && <h2>{titleMessage[searchStatus]}</h2>}
       {searchStatus === "SUCCESS" && <h2>{titleMessage[searchStatus]}</h2>}
       {list.length === 0 && searchStatus === "SUCCESS" && (
