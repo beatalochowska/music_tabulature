@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { SearchForm, ResultsList } from "components";
 import { RecordView, Tabulator, RecordResponse } from "models/tabulator";
 import { getTabs, recordToView } from "api/musicTab";
+import styles from "./MainPage.module.scss";
 
 function MainPage() {
   const [resultsList, setResultsList] = useState<RecordView[]>([]);
@@ -23,7 +24,9 @@ function MainPage() {
 
   return (
     <>
-      <h1>Music Tabulators MainPage</h1>
+      <div className={styles.header}>
+        <h1>Find your tabulators</h1>
+      </div>
       <SearchForm onSubmit={onSubmit} />
       <ResultsList list={resultsList} searchStatus={searchStatus} />
     </>

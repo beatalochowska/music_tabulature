@@ -20,7 +20,6 @@ function ResultsList({ list, searchStatus }: ResultsListProps) {
   }
   return (
     <>
-      <div className={styles.spinner}></div>
       {searchStatus === "LOADING" && <div className={styles.spinner}></div>}
       {searchStatus === "INIT" && <h2>{titleMessage[searchStatus]}</h2>}
       {searchStatus === "SUCCESS" && <h2>{titleMessage[searchStatus]}</h2>}
