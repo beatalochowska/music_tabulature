@@ -1,5 +1,6 @@
 import React from "react";
 import { RecordView } from "models/tabulator";
+import "./styles.scss";
 
 interface ResultsListProps {
   list: RecordView[];
@@ -7,7 +8,7 @@ interface ResultsListProps {
 }
 
 const titleMessage: { [key: string]: string } = {
-  INIT: "Write something to start",
+  INIT: "Search for your favourite music",
   FAILURE: "Couldn't load results",
   LOADING: "Loading...",
   SUCCESS: "Searched items list",
@@ -15,19 +16,29 @@ const titleMessage: { [key: string]: string } = {
 
 function ResultsList({ list, searchStatus }: ResultsListProps) {
   if (searchStatus === "ERROR") {
-    return <p>error</p>;
+    return <p>Sorry, something went wrong :( Please try again later.</p>;
   }
   return (
     <>
-      <h2>{titleMessage[searchStatus]}</h2>
+      {searchStatus === "LOADING" && <div className="lds-dual-ring"></div>}
+      {searchStatus === "INIT" && <h2>{titleMessage[searchStatus]}</h2>}
+      {searchStatus === "SUCCESS" && <h2>{titleMessage[searchStatus]}</h2>}
       {list.length === 0 && searchStatus === "SUCCESS" && (
         <p>No results found</p>
       )}
       <ul>
-        {list.map(({ artist, songTitle, tabTypes }) => (
-          <li key={`${artist}${songTitle}${tabTypes}`}>
-            {artist}, {songTitle}, {tabTypes.toString()}
-          </li>
+        {list.map(({ artist, songTitle, tabTypes }, id) => (
+          <table key={id}>
+            <tbody>
+              <tr>
+                <td>{artist}</td>
+                <td>{songTitle}</td>
+                {tabTypes.map((el, id) => (
+                  <td key={id}>{el}</td>
+                ))}
+              </tr>
+            </tbody>
+          </table>
         ))}
       </ul>
     </>
