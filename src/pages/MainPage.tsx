@@ -25,7 +25,7 @@ function MainPage() {
   return (
     <>
       <div className={styles.header}>
-        <h1>Find your tabulators</h1>
+        <h1 className={styles.headerText}>Find your tabulators</h1>
       </div>
       <SearchForm onSubmit={onSubmit} />
       <ResultsList list={resultsList} searchStatus={searchStatus} />
