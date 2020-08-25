@@ -19,7 +19,7 @@
 .searchData {
   display: flex;
   justify-content: space-between;
-  width: 70vw;
+  min-width: 70vw;
 }
 
 .searchInput {
@@ -34,6 +34,7 @@
 .searchButton {
   @extend %searchData;
   width: 20vw;
+  min-width: 20rem;
   height: 6rem;
   border: 2px solid #2bb5a7;
   border-radius: 0.4rem;
