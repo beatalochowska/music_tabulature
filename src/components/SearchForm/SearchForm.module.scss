@@ -1,53 +1,106 @@
-.searchForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 2rem;
-}
-
-%searchData {
-  padding: 1rem;
-  margin: 1rem;
+%searchControl {
+  padding: 10px;
   border: 1px solid #b5b5b5;
   border-radius: 0.4rem;
+  min-height: 44px;
+  line-height: 20px;
   color: #4b4b4b;
+  outline: none;
+
   &:focus {
-    outline: none;
     border: 2px solid #2bb5a7;
   }
 }
-.searchData {
+
+.searchForm {
   display: flex;
   justify-content: space-between;
-  min-width: 70vw;
+  align-items: center;
+  margin-top: 32px;
+  margin-bottom: 32px;
 }
 
 .searchInput {
-  @extend %searchData;
-  width: 60vw;
+  @extend %searchControl;
+  width: calc(60% - 16px);
 }
 
 .searchSelect {
-  @extend %searchData;
+  @extend %searchControl;
+  width: calc(25% - 16px);
 }
 
 .searchButton {
-  @extend %searchData;
-  width: 20vw;
-  min-width: 20rem;
-  height: 6rem;
+  @extend %searchControl;
+  width: calc(15% - 16px);
   border: 2px solid #2bb5a7;
-  border-radius: 0.4rem;
+  padding-left: 25px;
+  padding-right: 25px;
   font-weight: 700;
   font-size: 2rem;
-  color: white;
+  color: #fff;
   background-color: #2bb5a7;
   cursor: pointer;
   box-shadow: 1px 1px 1px #b5b5b5;
-  transition: ease-in-out 0.5s;
+  transition: all 0.5s ease-in-out;
+
+  & > svg {
+    display: none;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    margin-right: auto;
+
+    path {
+      fill: #fff;
+    }
+  }
 
   &:hover {
-    background-color: white;
+    background-color: #fff;
     color: #2bb5a7;
+
+    & > svg {
+      path {
+        fill: #2bb5a7;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 600px) and (max-width: 1023px) {
+  .searchInput {
+    width: calc(100% - 300px);
+  }
+  .searchSelect {
+    width: 150px;
+  }
+  .searchButton {
+    width: auto;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .searchForm {
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+  .searchInput {
+    width: calc(100% - 170px);
+  }
+  .searchSelect {
+    width: 100px;
+  }
+  .searchButton {
+    min-width: 52px;
+    padding-left: 10px;
+    padding-right: 10px;
+    & > span {
+      display: none;
+    }
+
+    & > svg {
+      display: block;
+    }
   }
 }

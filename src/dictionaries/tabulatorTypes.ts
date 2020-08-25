@@ -22,3 +22,17 @@ export const tabulatorTypes: Dictionary<Tabulator>[] = [
     label: "Any",
   },
 ];
+
+export const titleMessage: { [key: string]: string } = {
+  INIT: "Search for your favourite music",
+  FAILURE: "Couldn't load results",
+  LOADING: "Loading...",
+  SUCCESS: "Searched items list",
+};
+
+export const tabulatorsConverter: { [key: string]: string } = {
+  CHORDS: "chords",
+  TEXT_BASS_TAB: "bass",
+  TEXT_GUITAR_TAB: "guitar",
+  PLAYER: "player",
+};

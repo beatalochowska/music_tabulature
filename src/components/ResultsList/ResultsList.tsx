@@ -1,25 +1,12 @@
 import React from "react";
 import { RecordView, Tabulator } from "models/tabulator";
 import styles from "./ResultsList.module.scss";
+import { tabulatorsConverter, titleMessage } from "dictionaries/tabulatorTypes";
 
 interface ResultsListProps {
   list: RecordView[];
   searchStatus: ResponseStatus;
 }
-
-const titleMessage: { [key: string]: string } = {
-  INIT: "Search for your favourite music",
-  FAILURE: "Couldn't load results",
-  LOADING: "Loading...",
-  SUCCESS: "Searched items list",
-};
-
-const tabulatorsConverter: { [key: string]: string } = {
-  CHORDS: "chords",
-  TEXT_BASS_TAB: "bass",
-  TEXT_GUITAR_TAB: "guitar",
-  PLAYER: "player",
-};
 
 const renderSingleType = (tab: Tabulator) => {
   let renderedName = tabulatorsConverter[tab];
@@ -36,17 +23,15 @@ function ResultsList({ list, searchStatus }: ResultsListProps) {
   }
 
   return (
-    <div className={styles.searchResults}>
+    <section className={styles.searchResults}>
       {searchStatus === "LOADING" && <div className={styles.spinner}></div>}
-      {searchStatus === "INIT" && (
-        <h2 className={styles.searchTitle}>{titleMessage[searchStatus]}</h2>
-      )}
+      {searchStatus === "INIT" && <h2>{titleMessage[searchStatus]}</h2>}
 
       {list.length === 0 && searchStatus === "SUCCESS" && (
         <p>Sorry, we didn't find your tabulators :( </p>
       )}
 
-      <table className={styles.results}>
+      <table>
         <tbody>
           {list.map(({ artist, songTitle, tabTypes }, id) => (
             <tr key={id} className={styles.searchRecord}>
@@ -59,7 +44,7 @@ function ResultsList({ list, searchStatus }: ResultsListProps) {
           ))}
         </tbody>
       </table>
-    </div>
+    </section>
   );
 }
 

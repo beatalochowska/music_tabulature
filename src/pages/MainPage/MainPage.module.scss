@@ -8,8 +8,8 @@
   justify-content: center;
   align-items: center;
   box-shadow: 3px 3px 3px #b5b5b5;
-}
 
-.headerText {
-  font-weight: 400;
+  & > h1 {
+    font-weight: 400;
+  }
 }

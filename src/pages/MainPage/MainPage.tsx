@@ -24,11 +24,13 @@ function MainPage() {
 
   return (
     <>
-      <div className={styles.header}>
-        <h1 className={styles.headerText}>Find your tabulators</h1>
+      <header className={styles.header}>
+        <h1>Find your tabulators</h1>
+      </header>
+      <div className="container">
+        <SearchForm onSubmit={onSubmit} searchStatus={searchStatus} />
+        <ResultsList list={resultsList} searchStatus={searchStatus} />
       </div>
-      <SearchForm onSubmit={onSubmit} />
-      <ResultsList list={resultsList} searchStatus={searchStatus} />
     </>
   );
 }
