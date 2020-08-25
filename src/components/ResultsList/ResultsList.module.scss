@@ -38,6 +38,7 @@
   margin: 1rem;
   padding: 1rem;
   width: 70vw;
+  border-collapse: collapse;
 
   td {
     border-bottom: 1px solid #bbb;
@@ -53,16 +54,35 @@
   font-size: 2rem;
   width: 25vw;
 }
-
-.tabulator {
-  padding: 0.5rem;
-  color: white;
-  border: 2px solid #ddb500;
-  border-radius: 5%;
-  background-color: #ddb500;
-  margin: 0.8rem;
+.tabulators {
+  display: inline-block;
+  width: 100%;
+  text-align: right;
 }
 
-.tabulators {
-  text-align: right;
+%tabulator {
+  padding: 0.5rem;
+  color: white;
+  border-radius: 5%;
+  margin: 0.8rem;
+  display: inline-block;
+}
+
+.player {
+  @extend %tabulator;
+  background-color: #ddb500;
+}
+.guitar {
+  @extend %tabulator;
+  background-color: rgb(228, 111, 111);
+}
+
+.bass {
+  @extend %tabulator;
+  background-color: rgb(116, 146, 241);
+}
+
+.chords {
+  @extend %tabulator;
+  background-color: rgb(70, 175, 105);
 }

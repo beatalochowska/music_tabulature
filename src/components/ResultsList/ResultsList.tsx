@@ -1,5 +1,5 @@
 import React from "react";
-import { RecordView } from "models/tabulator";
+import { RecordView, Tabulator } from "models/tabulator";
 import styles from "./ResultsList.module.scss";
 
 interface ResultsListProps {
@@ -21,10 +21,20 @@ const tabulatorsConverter: { [key: string]: string } = {
   PLAYER: "player",
 };
 
+const renderSingleType = (tab: Tabulator) => {
+  let renderedName = tabulatorsConverter[tab];
+  return (
+    <li className={styles[renderedName]} key={tab}>
+      {renderedName}
+    </li>
+  );
+};
+
 function ResultsList({ list, searchStatus }: ResultsListProps) {
   if (searchStatus === "ERROR") {
     return <p>Sorry, something went wrong :( Please try again later.</p>;
   }
+
   return (
     <div className={styles.searchResults}>
       {searchStatus === "LOADING" && <div className={styles.spinner}></div>}
@@ -43,11 +53,7 @@ function ResultsList({ list, searchStatus }: ResultsListProps) {
               <td className={styles.songTitle}>{songTitle}</td>
               <td className={styles.artist}>{artist}</td>
               <td className={styles.tabulators}>
-                {tabTypes.map((el, id) => (
-                  <button className={styles.tabulator} key={id}>
-                    {tabulatorsConverter[el]}
-                  </button>
-                ))}
+                <ul>{tabTypes.map(renderSingleType)}</ul>
               </td>
             </tr>
           ))}
